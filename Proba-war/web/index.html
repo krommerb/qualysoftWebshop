@@ -1,0 +1,111 @@
+    <!DOCTYPE html>
+
+    <html>
+        <head>
+            <title>ITEMS</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+            <!-- <link rel="stylesheet" type="text/css" href="main.css"> -->
+            <link rel="stylesheet" type="text/css" href="bootstrap.min.css" rel="stylesheet" media="screen">
+
+            <link rel="stylesheet" type="text/css" href="mystyle.css">
+
+            <link rel="stylesheet" href="font-awesome.min.css">
+        <!-- <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css"> -->
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <!-- <link rel="stylesheet" href="assets/css/main.css"> -->
+        <link rel="stylesheet" href="main-responsive.css">
+        <!-- <link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css"> -->
+        <!-- <link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css"> -->
+        <!-- <link rel="stylesheet" href="assets/css/theme_light.css" id="skin_color"> -->
+
+
+
+            <script src="jquery.js"></script>
+            <script src="modal.js"></script>
+
+            <!-- <script src="js/ui-elements.js"></script> -->
+            <!--script src="plugins/bootstrap-paginator/src/bootstrap-paginator.js"></script-->
+            <!--script src="plugins/jquery.pulsate/jquery.pulsate.min.js"></script-->
+            <!-- <script src="js/jquery.gritter.min.js"></script>   -->
+
+            <script type="text/javascript" src="js.js"></script>
+
+        </head>
+        <body>
+        <div id="sch_div">Managing products</div>
+               
+
+
+         <div id="category_options">
+
+               <span>Select a category to display:</span> 
+               <select id="category_select">
+                </select>
+        </div>  
+
+            <br>
+            <br>
+
+        <div id="results">
+            
+            <table id="results_table">
+                <thead>
+                <tr>
+                    <th>Name</th><th>Description</th><th>Price</th><th>Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+        <div id="product" style="display:none; cursor: default"> 
+        <h1>Product</h1> 
+         
+
+        
+
+         <table id="product_table">
+            <thead> 
+
+                <tr>
+                    <th>Name</th><th>Description</th><th>Price</th><th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td><input type="text" id="prod_name" value="name"/></td>  
+               <td><input type="text" id="prod_description" value="description"/></td>  
+               <td> <input type="text" id="prod_price" value="price"/></td> 
+               <td><input type="text" id="prod_category" value="category"/></td>  
+            </tr>  
+            </tbody>
+
+        </table>
+        </br>
+         <br>
+            <br>
+            <br>
+            <br>
+            
+        <div class="col-md-3"></div>
+            <div class="col-md-4">
+            <button class="btn btn-red btn-block" type="submit">
+                Delete Product
+                </button>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-yellow btn-block" id="update_button" type="submit"><i class="icon-circle-arrow-left"></i>
+                    Update Product
+            </button>
+        </div>         
+    </div> 
+
+    </body>
+</html>

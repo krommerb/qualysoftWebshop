@@ -1,0 +1,93 @@
+#sch_div{
+ 
+     
+    font-size: 2em;
+    text-align: center;
+    height: 100px;
+    width: 80%;
+    margin: 15% auto 0 auto;
+    color: gray;
+    
+}
+#form{
+    
+    text-align: center;
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#send{
+    
+    border-radius: 5px;
+    background:  rgb(154, 138, 185);
+    height: 35px;
+}
+
+a{
+    
+    text-decoration: none;
+}
+
+input {
+    height : 35px;
+        
+}
+
+::-webkit-input-placeholder {
+   color: rgb(184, 163, 226);
+   text-align: center;
+   font-variant: small-caps;
+   font-size: 1.2em;
+   opacity: 0.6;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+color: rgb(184, 163, 226);
+   text-align: center;
+   font-variant: small-caps;
+   font-size: 1.2em;
+   opacity: 0.6;
+   
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgb(184, 163, 226);
+   text-align: center;
+   font-variant: small-caps;
+   font-size: 1.2em;
+   opacity: 0.6;
+}
+
+:-ms-input-placeholder {  
+  color: rgb(184, 163, 226);
+   text-align: center;
+   font-variant: small-caps;
+   font-size: 1.2em;
+   opacity: 0.6;
+}
+
+#item{
+    
+    font-size: 2em;
+    text-align: center;
+    height: 100px;
+    width: 80%;
+    margin: 15% auto 0 auto;
+    color: gray;
+    
+}
+
+#author, #title, #category{
+    
+    
+      
+    font-size: 1em;
+    text-align: center;
+    height: 40px;
+    width: 80%;
+    //margin: 5% auto 0 auto;
+    color: gray;
+    
+    
+}
