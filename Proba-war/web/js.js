@@ -43,8 +43,8 @@ frontHandler.prototype.buildCategories = function(response){
          options +='<option value="'+response[i].id+'">'+response[i].name+'</option>'
 
     }
-      $('#category_select').html(options);
-     $('#category_select').trigger('change');         //hogy az oldal betöltése után rögtön listázzon
+     $('.category_select').html(options);
+     $('.category_select').trigger('change');         //hogy az oldal betöltése után rögtön listázzon
 
 
 }
@@ -73,7 +73,56 @@ frontHandler.prototype.init = function(){
             _this.update();
 
         });
+
+
+         $('.dismiss_button').click(function(){
+
+             $("body").off('mousewheel');
+             $.unblockUI();
+
+        });
+
+
+          $('#delete_button').click(function(){
+
+            _this.delete();
+
+        });
+
+
+          $('#newproduct_button').click(function(){
+
+            _this.newProduct();
+
+        });
+
+
+       $("#add_new_product_button").click(function(){_this.addNewProduct()})
+
+
+
+
 }
+
+frontHandler.prototype.delete = function(){
+
+   var _this = this;
+ 
+   var id = _this.id.substr(2, _this.id.length-2);
+
+   console.log("delete:" +_this.id);
+   $.ajax({
+            type: "DELETE",
+            url: _this.baseURL+"product/"+id, 
+            dataType: 'JSON',
+            success:   function(){
+                $("body").off('mousewheel');                        // visszakapcsoljuk a szkrollt
+                $.growlUI('Product deleted!');                      // msg megjelenítése
+               _this.ajax("product/",  _this.buildTable);         // összes termék listázása/táblázat frissítése
+            }
+    });
+};
+
 
 
 frontHandler.prototype.getProductsByCategoryID = function(id){
@@ -137,8 +186,11 @@ frontHandler.prototype.update = function(){
             data: JSON.stringify(data),
             contentType: "application/json",
             success:   function(){
-              $("body").off('mousewheel');   // visszakapcsoljuk a szkrollt
-              $.growlUI('Product updated!'); // msg megjelenítése
+              $("body").off('mousewheel');                        // visszakapcsoljuk a szkrollt
+              $.growlUI('Product updated!');                      // msg megjelenítése
+               _this.ajax("product/",  _this.buildTable);         // összes termék listázása/táblázat frissítése
+              
+
             }
             
     });
@@ -149,12 +201,14 @@ frontHandler.prototype.buildTable = function (response){
 
     var _this = this;
     if (response == null){
-                alert("Wrong Id");
-                return false;
+
+    //      // _this.results = response;                        // osztályszinten tároljuk az aktuális eredményeket a frissítéshez
+
+    //             // alert("Wrong Id");
+    //             // return false;
+
+    //          return false; // ha    
     }
-
-
-  
 
      var res_div =   $("#results");
      var $table = $('#results_table');
@@ -169,50 +223,42 @@ frontHandler.prototype.buildTable = function (response){
 
             var id = $(this).attr('id');
             fh.id=id;
-           // var data=new Array();
+            var data=new Array();
             // data[0]=$(this).attr('id');
        
 
-             // for (j=1;j<=$(this).children().length;j++){
-            //      // végigiterálunk a td elemeken
-            //       data[j]=$(this).children().eq(j-1).text() 
-            //   }
-            var data1 = [];
-            var data2 = [];
-
-            var prod = {};               // json inicializálása
-
-            for (j=0;j<$(this).children().length;j++){
-                index = $(this).children().eq(j).attr("id");
-                
-                prod[index] = $(this).children().eq(j).text();
-                data2[j]=  prod[index] ;
-
+             for (j=0;j<=$(this).children().length;j++){
+                 // végigiterálunk a td elemeken
+                  data[j]=$(this).children().eq(j).text() 
               }
+            // var data1 = [];
+            // var data2 = [];
+
+            // var prod = {};               // json inicializálása
+
+            // for (j=0;j<$(this).children().length;j++){
+            //     index = $(this).children().eq(j).attr("id");
                 
+            //     prod[index] = $(this).children().eq(j).text();
+            //     data2[j]=  prod[index] ;
+
+            //   }
 
           //  data1.push(prod)
 
-            console.log(prod);
-            // console.log(data2);
+            // console.log(prod);
+           // console.log(data);
 
-             fh.data = prod; 
+            //  fh.data = prod; 
 
-             editProduct(id, data2);
+             editProduct(id, data);
       });
-
                  $row.append('<td id="name">'+response[i].name+'</td><td id="description">'+response[i].description+
                               '</td><td id="price">'+response[i].price+'</td><td id="category">'+response[i].category.name+'</td>');
                  $table.append($row);
-                 
-               
              }
             res_div.show();
-        
-
 }
-
-
 
 
 function editProduct(id, data){
@@ -227,7 +273,7 @@ function editProduct(id, data){
 
         var input=$('#product input');
         for (i=0;i<input.length;i++){             // végigiterálunk az input elemeken
-              input.eq(i).attr("value", data[i])
+              input.eq(i).attr("value", data[i]).val(data[i])
           }
 
         //  $('#update_button').data('productId', data[0]);  // belerakjuk az id-t
@@ -241,7 +287,74 @@ function editProduct(id, data){
                      left : '10%'
                  } 
           }); 
-   
+}
 
        
+/*
+
+  NEW PRODUCT
+
+
+*/
+
+
+
+frontHandler.prototype.newProduct = function(){
+
+
+  // console.log("new prod");
+  var _this = this;
+
+
+  $("body").on('mousewheel', function(){
+      return false;
+  });
+
+ $.blockUI({                                    //modális ablak
+              message: $('#new_product_div'), 
+              css: { top: '10%',
+                     height : "400px",
+                     width : '80%',
+                     margin : '0px',
+                     left : '10%'
+                 } 
+          }); 
+
+}
+
+frontHandler.prototype.addNewProduct = function(){
+
+  console.log("add")
+
+    var _this = this;
+
+    var input=$('#new_product_wrapper input');
+     data = {};
+     //data['id'] = id;
+
+     data['name'] = input.eq(0).val();
+     data['price'] = input.eq(1).val();
+     catid= $("#new_product_wrapper select :selected").val();
+     
+     data['description'] = $('#new_product_wrapper textarea').val();
+
+     //data['price'] = input.eq(2).val();
+
+     console.log(data);
+
+
+     $.ajax({
+            type: "POST",
+            url: _this.baseURL+"product/"+catid,          // az id-t is átküldjük a JSON-ban...
+            dataType: 'JSON',
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            success:   function(){
+              
+              $("body").off('mousewheel');                        // visszakapcsoljuk a szkrollt
+              $.growlUI('Product added!');                      // msg megjelenítése
+               _this.ajax("product/",  _this.buildTable);         // összes termék listázása/táblázat frissítése
+
+            }
+    });
 }

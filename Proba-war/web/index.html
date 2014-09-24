@@ -37,14 +37,20 @@
         <div id="sch_div">Managing products</div>
                
 
-
-         <div id="category_options">
+             <!-- <div class="col-md-4"></div>  -->
+        
+      
+         <div class="category_options">
 
                <span>Select a category to display:</span> 
-               <select id="category_select">
-                </select>
-        </div>  
+               <select class="category_select" id="category_select"> </select>
+               
+        </div>
 
+        <div style="float: left" class="col-md-4">
+                <a class="btn btn-yellow"  id="newproduct_button" href="#"><i class="icon-plus"></i>
+                                            + product</a>
+                </div>  
             <br>
             <br>
 
@@ -60,52 +66,98 @@
                    
                 </tbody>
             </table>
-
-
         </div>
 
-
         <div id="product" style="display:none; cursor: default"> 
-        <h1>Product</h1> 
-         
+                <h1>Product</h1> 
+                 <table id="product_table">
+                    <thead> 
+                        <tr>
+                            <th>Name</th><th>Description</th><th>Price</th><th>Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      <td><input type="text" id="prod_name" value="name"/></td>  
+                       <td><input type="text" id="prod_description" value="description"/></td>  
+                       <td> <input type="text" id="prod_price" value="price"/></td> 
+                       <td><input type="text" id="prod_category" value="category"/></td>  
+                    </tr>  
+                    </tbody>
+                </table>
+                </br>
+                 <br>
+                    <br>
+                    <br>
+                    <br>
+                <!-- <div class="col-md-2"></div> -->
 
-        
-
-         <table id="product_table">
-            <thead> 
-
-                <tr>
-                    <th>Name</th><th>Description</th><th>Price</th><th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-              <tr>
-              <td><input type="text" id="prod_name" value="name"/></td>  
-               <td><input type="text" id="prod_description" value="description"/></td>  
-               <td> <input type="text" id="prod_price" value="price"/></td> 
-               <td><input type="text" id="prod_category" value="category"/></td>  
-            </tr>  
-            </tbody>
-
-        </table>
-        </br>
-         <br>
-            <br>
-            <br>
-            <br>
-            
-        <div class="col-md-3"></div>
-            <div class="col-md-4">
-            <button class="btn btn-red btn-block" type="submit">
-                Delete Product
-                </button>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-yellow btn-block" id="update_button" type="submit"><i class="icon-circle-arrow-left"></i>
-                    Update Product
-            </button>
-        </div>         
+                <div class="col-md-4">
+                    <button class="btn btn-red" type="submit" id="delete_button">
+                        Delete Product
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-yellow" id="update_button" type="submit">
+                        Update Product
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-blue dismiss_button"  type="">
+                        Dismiss dialog
+                    </button>
+                </div>                  
     </div> 
+
+    <div id="new_product_div" style="display:none; cursor: default">
+       <div id="new_product_wrapper">
+            <h1>Add new product</h1> 
+            
+             <div class="col-md-2"></div>
+
+             <div class="col-md-2">
+
+                <input type="text" name="name" placeholder="name" />
+            </div>
+           
+            <div class="col-md-2">
+
+               <!-- <span>Select a category</span>  -->
+               <select class="category_select"> </select>
+               
+            </div>
+            
+            <div class="col-md-2">
+
+                 <textarea name="description" cols="20" rows="5"></textarea>
+            
+            </div>
+            <div class="col-md-2">
+
+                <input type="text" name="price" placeholder="price" />
+            </div>
+           
+            <!-- <input type="submit" name="add" value="Add product"> -->
+
+             <div class="col-md-1"></div>
+             <div class="col-md-2">
+                    <button class="btn btn-yellow" id="add_new_product_button"  type="">
+                        Add product
+                    </button>
+                    </br>
+                    </br>
+                    </br>
+
+                     <button class="btn btn-blue dismiss_button"  type="">
+                        Dismiss dialog
+                    </button>
+            
+
+            </div> 
+               
+       </div> 
+
+</div>
 
     </body>
 </html>

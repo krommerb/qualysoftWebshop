@@ -1,9 +1,11 @@
 package hu.rest.daoservice;
 
+import hu.rest.entity.Category;
 import hu.rest.entity.Product;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,6 +17,12 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ProductHandler implements ProductHandlerLocal {
 
+    
+    
+     
+//    @Inject
+//    CategoryHandlerLocal ch;
+    
     @PersistenceContext
     EntityManager em;
         public ProductHandler() {
@@ -52,10 +60,25 @@ public class ProductHandler implements ProductHandlerLocal {
                 setParameter("id", product.getId()).setParameter("name", product.getName()).
                 setParameter("description", product.getDescription()).setParameter("price", product.getPrice())
                 .executeUpdate();
-        
-     
       
      }
     
     
+    @Override
+    public void deleteProduct(Integer id){
+        
+        em.createQuery("DELETE FROM Product p WHERE p.id = :id", Product.class).
+                setParameter("id", id).executeUpdate();
+        
+    }
+    
+    @Override
+   public void addNewProduct(Product product,Integer catid){
+
+        System.out.println(product+""+catid);
+//           Category cat =  ch.getCategoryById(catid.longValue());
+//           product.setCategory(cat);
+//           em.persist(product);
+   }
+   
 }

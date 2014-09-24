@@ -8,6 +8,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -114,8 +115,12 @@ public class ProductRest{
 //       
 //   }
    
+/*
    
- @POST
+   Az eredeti formos űrlaphoz tartozó POST metódus
+ */
+
+@POST
  @Path("/product")
  public void addNewProduct(@FormParam("categories") String cat,
                            @FormParam("description") String des,
@@ -131,11 +136,18 @@ public class ProductRest{
 
      
      // És aztán mi történik? Nem tölt újra az oldal, hogyan adok  visszajelzést a sikeres feltöltésről?
-     
- 
- 
  
  }
+ 
+ @POST
+ @Path("/product/{catid}")
+ public void addNewProduct(Product product, @PathParam("catid") Integer catid){
+     
+//     System.out.println("Added: "+catid+" "+product);
+     
+     ph.addNewProduct(product, catid);
+ }
+ 
  
 //  @PUT
 // @Consumes("application/json; charset=UTF-8")
@@ -159,4 +171,14 @@ public void updateProduct (Product product){
       ph.updateProduct(product);
   
   }
+
+@DELETE
+@Path("product/{id}")
+public void deleteProduct(@PathParam("id") Integer id){
+    
+    System.out.println("Prod deleted: "+id);
+    
+    ph.deleteProduct(id);
+}
+
 }

@@ -135,11 +135,13 @@ color: rgb(184, 163, 226);
 
 }
 
-#category_options{
+.category_options{
 
-  width: 26%;
-  margin: 20px auto;
+   width: 30%; 
+    float: left;
+   
 
+   margin-left: 35%;
 }
 
 
@@ -161,6 +163,11 @@ color: rgb(184, 163, 226);
   text-align: center;
 }
 
+
+#new_product_wrapper{
+
+margin-top: 10%;
+}
 
 .btn {
   font-family: 'Open Sans';
