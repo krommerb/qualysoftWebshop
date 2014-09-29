@@ -2,7 +2,6 @@ package hu.rest.daoservice;
 
 import hu.rest.entity.Category;
 import java.util.List;
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,16 +19,13 @@ public class CategoryHandler implements CategoryHandlerLocal {
     EntityManager em;
     
     @Override
-    @RolesAllowed("admin")
+    //@RolesAllowed("admin")
     public List<Category> getCategories() {
-        
         return em.createQuery("SELECT c FROM categories c", Category.class).getResultList();
     }
 
     @Override
     public Category getCategoryById(Long id) {
-        
         return em.find(Category.class, id);
-        
-        }
+     }
 }

@@ -138,10 +138,17 @@ color: rgb(184, 163, 226);
 .category_options{
 
    width: 30%; 
-    float: left;
+   float: left;
    
 
    margin-left: 35%;
+}
+
+
+.category_select{
+
+   height: 35px;
+  
 }
 
 

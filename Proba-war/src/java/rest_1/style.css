@@ -1,5 +1,4 @@
 #sch_div{
- 
      
     font-size: 2em;
     text-align: center;
@@ -31,7 +30,6 @@ a{
 
 input {
     height : 35px;
-        
 }
 
 ::-webkit-input-placeholder {
@@ -79,8 +77,6 @@ color: rgb(184, 163, 226);
 }
 
 #author, #title, #category{
-    
-    
       
     font-size: 1em;
     text-align: center;
@@ -88,6 +84,5 @@ color: rgb(184, 163, 226);
     width: 80%;
     //margin: 5% auto 0 auto;
     color: gray;
-    
     
 }

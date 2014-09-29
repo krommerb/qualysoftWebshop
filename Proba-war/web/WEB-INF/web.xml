@@ -30,8 +30,7 @@
           <param-value>true</param-value>
         </init-param>-->
 
-
-    <security-constraint> 
+<!--   <security-constraint> 
         <display-name>REST constraint</display-name>
         <web-resource-collection>
             <web-resource-name>All</web-resource-name>
@@ -44,10 +43,13 @@
             
     </security-constraint>
     
-    <!--ALAPSZSZINTŰ AUTENTIKÁCIÓ KÉRÉSE-->
+    ALAPSZSZINTŰ AUTENTIKÁCIÓ KÉRÉSE
     
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>file</realm-name>
     </login-config>
+    -->
+    
+    
 </web-app>

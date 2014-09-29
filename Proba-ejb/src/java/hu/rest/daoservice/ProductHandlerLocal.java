@@ -13,15 +13,10 @@ import javax.ejb.Local;
 @Local
 public interface ProductHandlerLocal {
     
-    Product getProductById(String id);
-    
+    Product getProductById(Long id);
     List<Product> getProducts();
-    
-    List<Product> getProductsByCategory(int id);
-        
+    List<Product> getProductsByCategory(Long id);
     void updateProduct(Product p);
-    void deleteProduct(Integer id);
-    void addNewProduct(Product product,Integer catid);
-
-
+    void deleteProduct(Long id);
+    void addNewProduct(Product product);
 }

@@ -11,8 +11,8 @@ import javax.persistence.Id;
  *
  * @author krommerb
  */
-//@Entity
-//@Table(name = "categories")             // EZZEL MIÉRT NEM DEPLOYOL?
+
+
 @Entity(name = "categories")
 
 public class Category implements Serializable {
@@ -26,8 +26,6 @@ public class Category implements Serializable {
     @Column
     private String description; 
 
-            
-            
     public Long getId() {
         return id;
     }
@@ -52,31 +50,11 @@ public class Category implements Serializable {
         this.description = description;
     }
     
-    
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Category)) {
-            return false;
-        }
-        Category other = (Category) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public String toString() {
-        return "hu.rest.entity.Category[ id=" + id + " ]";
+
+        String back = "CATEGORY: ";
+        back += this.id+this.name+this.description;
+        return back;
     }
-    
 }

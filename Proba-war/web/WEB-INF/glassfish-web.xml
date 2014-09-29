@@ -7,7 +7,8 @@
             <description>Keep a copy of the generated servlet class' java code.</description>
         </property>
     </jsp-config>
-  
+    
+   <parameter-encoding default-charset="UTF-8" />
   <!--AZ EGYES ROLE_OK HOZZÁRENDELÉSE A SZERVEREN BEÁLLÍTOTT GROUP-OKHOZ-->
   
 <!--    <security-role-mapping>

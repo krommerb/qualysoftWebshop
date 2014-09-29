@@ -17,16 +17,15 @@ import javax.persistence.Table;
  */
 //@Entity(name = "products")  // ekkor a products táblára mappeli az entityt (ez van az adatbázisban)
 @Entity
-@Table(name = "products")  // így viszont csak azt mondom meg neki, h. így hívjék a táblát
+@Table(name = "products")  // így viszont csak azt mondom meg neki, h. így hívják a táblát
 @NamedQueries  (
         {
            @NamedQuery(name = Product.QUERY_FIND_BY_CATEGORY_ID,
-           query="SELECT p FROM Product p WHERE p.category.id = :categoryId")  // most a products táblanevet kell használni, mert arra van rámappelve
+           query="SELECT p FROM Product p WHERE p.category.id = :categoryId") 
         })
 
-
-
 public class Product implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     public static final String QUERY_FIND_BY_CATEGORY_ID = "product.queryByCategory";
     
@@ -34,13 +33,11 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = false)       // a @Column valójában nem kell, ha így hívják a táblában az oszlopot, akkor default
+    private String name;            // név szerint mappeli
     
-    @Column(nullable = false)
-    
+   @Column(nullable = false)
     private String description;
-    
     
     @Column
     private int price;
@@ -52,21 +49,11 @@ public class Product implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
-
     
     @ManyToOne
-    
-    private Category category; // ezt miért nem lehet megváltoztatni pl cat-re? 
+    private Category category; 
 
-    // honnan tudja, hogy CATEGORY_ID oszlopot keressen a prod táblában?
-//
-//    public Category getCat() {
-//        return cat;
-//    }
-//
-//    public void setCat(Category cat) {
-//        this.cat = cat;
-//    }
+    
     public String getName() {
         return name;
     }
@@ -82,8 +69,6 @@ public class Product implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
- 
     
     public Long getId() {
         return id;
@@ -109,8 +94,8 @@ public class Product implements Serializable {
     public String toString(){
       
         
-        String back = this.id+this.name+this.description+this.price;
-        
+        String back = this.id+this.name+this.description+this.price+this.category.toString();
+                
         return back;
         
     }

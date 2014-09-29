@@ -39,11 +39,10 @@ public class Servlet extends HttpServlet {
 	request.setCharacterEncoding("UTF-8");
 //	response.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html;charset=UTF-8");
-	 PrintWriter w = response.getWriter();
-	 w.println("<h1>Keresés:</h1>");
-	 
-	 String s = request.getParameter("search");
-	 w.println(s);
+	PrintWriter w = response.getWriter();
+	w.println("<h1>Keresés:</h1>");
+	String s = request.getParameter("search");
+	w.println(s);
 	 
 	 
 	}
@@ -55,10 +54,7 @@ public class Servlet extends HttpServlet {
 		//super.doPost(req, resp);
 		
                 resp.setContentType("text/html;charset=UTF-8");
-             
-		
                 PrintWriter w = resp.getWriter();
-              
 		w.println("<h1>POST-űrlap kiértékelése:</h1>");
                  //String s = req.getParameter("search");
 		 //w.println(s);
@@ -66,29 +62,11 @@ public class Servlet extends HttpServlet {
 		 Map<String, String[]> params;
 		 params = req.getParameterMap();
 		 Set<String> keys = params.keySet();
-		// Iterator i = keys.iterator();
-		
-//		 while (i.hasNext()){
-//			
-//			 String next = (String) i.next();
-//			 String p[] = params.get(next);
-//			 System.out.println("Kulcs: " + next + " Érték: "+p[0]);
-//			 
-//		 } 
-		 
 		 for (String key:keys){
 			 
                      w.println("<span>"+key+"</span>");
                      w.println("<span>"+params.get(key)[0]+"</span>");
                      
 		 }
-		 
-		
-	   
-	    
-	   
 	}
-	
-	
-
 }

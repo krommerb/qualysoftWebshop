@@ -28,8 +28,6 @@ public class CategoryRest {
     
     @Produces("application/json; charset=UTF-8")
     public List<Category> getCategories(){
-        
-        
         return ch.getCategories();
     }
     
@@ -39,6 +37,4 @@ public class CategoryRest {
     public Category getCategory(@PathParam ("id") Long id ){
          return ch.getCategoryById(id);
     }
-    
-    
 }

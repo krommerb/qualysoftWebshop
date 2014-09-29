@@ -48,8 +48,10 @@
         </div>
 
         <div style="float: left" class="col-md-4">
-                <a class="btn btn-yellow"  id="newproduct_button" href="#"><i class="icon-plus"></i>
-                                            + product</a>
+                <a class="btn btn-yellow"  id="newproduct_button" href="#">
+
+                <!-- <i class="icon-plus"></i> -->
+                                            Add product</a>
                 </div>  
             <br>
             <br>
@@ -81,7 +83,7 @@
                       <td><input type="text" id="prod_name" value="name"/></td>  
                        <td><input type="text" id="prod_description" value="description"/></td>  
                        <td> <input type="text" id="prod_price" value="price"/></td> 
-                       <td><input type="text" id="prod_category" value="category"/></td>  
+                       <td><select class="category_select"> </select></td>  
                     </tr>  
                     </tbody>
                 </table>
@@ -113,7 +115,7 @@
        <div id="new_product_wrapper">
             <h1>Add new product</h1> 
             
-             <div class="col-md-2"></div>
+             <div class="col-md-1"></div>
 
              <div class="col-md-2">
 
@@ -129,7 +131,7 @@
             
             <div class="col-md-2">
 
-                 <textarea name="description" cols="20" rows="5"></textarea>
+                 <textarea name="description" placeholder="description" cols="20" rows="5"></textarea>
             
             </div>
             <div class="col-md-2">

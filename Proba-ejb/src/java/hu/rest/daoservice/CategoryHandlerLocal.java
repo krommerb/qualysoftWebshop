@@ -13,5 +13,4 @@ public interface CategoryHandlerLocal {
     
     public List<Category> getCategories();
     public Category getCategoryById(Long id);
-
 }
